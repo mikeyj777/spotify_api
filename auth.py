@@ -38,8 +38,3 @@ class Auth:
             self.access_token = token_response_data['access_token']
             expires_in = token_response_data['expires_in'] #seconds
             self.expires = now + timedelta(seconds=expires_in)
-
-auth = Auth()
-auth.send_request()
-print(auth.access_token)
-print(auth.expires)
