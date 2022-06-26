@@ -5,12 +5,10 @@ from search import Search
 # token expiration in Auth.expires
 
 auth = Auth()
-if not auth.send_request():
-    raise Exception('token invalid')
+auth.request_access_token()
 
 search_string = 'Time'
 search_type = 'artist'
-search = Search(auth.access_token, search_string, search_type)
-if not search.request():
-    raise Exception('search invalid')
-print('hi')
+search = Search(auth_token=auth.get_access_token(), q_type=search_type, q_string=search_string)
+search.request()
+
