@@ -4,4 +4,7 @@ from auth import Auth
 # token expiration in Auth.expires
 
 auth = Auth()
-auth.send_request()
+if not auth.send_request():
+    raise Exception('token invalid')
+access_token = auth.access_token
+print(access_token)
