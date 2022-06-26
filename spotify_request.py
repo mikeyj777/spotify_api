@@ -16,8 +16,9 @@ class Spotify_Request:
             search_params = urlencode({'q': search_string, 'type': search_type.lower()})
             self.uri = f'{endpoint}?{search_params}'
         
-        if request_type == rt.MY_PLAYLISTS:
-            self.uri = 'https://api.spotify.com/v1/me/playlists'
+        if request_type == rt.USER_PLAYLISTS:
+            user_id = request_params['user_id']
+            self.uri = f'https://api.spotify.com/v1/users/{user_id}/playlists'
 
 
     def request(self):
